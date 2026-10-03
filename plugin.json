@@ -1,0 +1,36 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "1panel",
+  "version": "0.1.0",
+  "description": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels.",
+  "author": {
+    "name": "Full Stack Skills / PartMe.AI"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "1panel",
+    "linux",
+    "mcp",
+    "operations"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "1Panel",
+        "shortDescription": "Scoped 1Panel operations via official MCP",
+        "longDescription": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels.",
+        "developerName": "Full Stack Skills / PartMe.AI",
+        "category": "Productivity",
+        "capabilities": [
+          "Interactive",
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Run a read-only 1Panel health check",
+          "Inspect my websites and certificate status"
+        ]
+      }
+    }
+  }
+}

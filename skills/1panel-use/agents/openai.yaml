@@ -1,0 +1,4 @@
+interface:
+  display_name: "1Panel Use"
+  short_description: "Scoped 1Panel operations with verified tool boundaries"
+  default_prompt: "Use $1panel-use for the requested bounded 1Panel operation, checking available tools and preserving authorization."

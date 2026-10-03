@@ -1,0 +1,4 @@
+interface:
+  display_name: "1Panel Apps"
+  short_description: "Scoped 1Panel operations with verified tool boundaries"
+  default_prompt: "Use $1panel-apps for the requested bounded 1Panel operation, checking available tools and preserving authorization."

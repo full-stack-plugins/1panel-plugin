@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "1panel": {
+      "command": "python",
+      "args": [
+        "-X",
+        "utf8",
+        "./scripts/panel_proxy.py",
+        "--data",
+        "${PLUGIN_DATA}"
+      ],
+      "cwd": "./"
+    }
+  }
+}

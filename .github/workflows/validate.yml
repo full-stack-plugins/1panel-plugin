@@ -1,0 +1,37 @@
+name: Validate 1Panel plugin
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  package-and-runtime:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          path: plugin
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: 1Panel-dev/mcp-1panel
+          ref: a12b2d4ddae90f6b210b73b89ba2bc4b572dcd0c
+          path: official
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.25.3'
+          cache-dependency-path: official/go.sum
+      - run: git -C official fetch --depth 1 origin tag v1.0.0
+      - name: Build pinned official executable without installing it
+        shell: bash
+        run: python plugin/scripts/build_official.py --source official --output "$GITHUB_WORKSPACE/official-test-binary${{ runner.os == 'Windows' && '.exe' || '' }}"
+      - run: python plugin/scripts/validate_portable_plugin.py
+      - run: python plugin/scripts/validate_markdown_links.py
+      - run: python plugin/scripts/check_snapshot.py
+      - name: Unit and real official-MCP integration tests
+        shell: bash
+        run: ONEPANEL_TEST_BINARY="$GITHUB_WORKSPACE/official-test-binary${{ runner.os == 'Windows' && '.exe' || '' }}" python -m unittest discover -s plugin/tests -v
+      - run: python plugin/scripts/package_plugin.py
