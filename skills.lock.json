@@ -18,14 +18,14 @@
       "dest": "skills/",
       "sha": "b009fa51c35b41c16464163c49916fe9bcd21caf",
       "sha256": {
-        "1panel-apps": "5c527c53bc09831b4dd034fb7c542641985908b083de6d58a13c59d829fb1c9c",
-        "1panel-certificates": "4d3b5daf149f2e2cec3f68477921605fa80126d6feefffd2265eed370d056b07",
-        "1panel-databases": "013d8ecb7a6c7da78877f981a27ce1de6b5ddcd96d65458e426cad897e63f770",
-        "1panel-security-audit": "05946cc1e5f84342917458a0ff69fba78c32d6db87e39eb89b08767e16a01b64",
-        "1panel-setup": "a526ac8b57cf607fa753d86905bf48043f228e7c29a35706f237dedff35fc11e",
-        "1panel-system": "ab50b877d0fee91ced19c2b216f0c7c24bcdc1ca4e5fdd8cb555879672611a2f",
-        "1panel-use": "8c8a0d7504363bd433ac7f0e470efbd35ed0db6ccc82cf6538a67f4c49a111e9",
-        "1panel-websites": "c603669235b1cd3403eb594d3d44e3acd77d76ee37a5df952a5313a191bbe12e"
+        "1panel-apps": "c88d6840dd6ab47ad1ab3bff69a339332d3b80d8ed7e5d83c5a57f35a64fd44a",
+        "1panel-certificates": "39a88bf025d7e7ef90b429cccbb76821fa0d034cf9e273a5e9d2891a1c9e2bf6",
+        "1panel-databases": "7caeac823ff0f4d1f6b737b8bb258012a2f13bce327a9d7f104ed0c23c6a360b",
+        "1panel-security-audit": "0a9380805359894f63daa06c4711a13f89f63b7c5d13c3306dfb4e1e73102ea7",
+        "1panel-setup": "b1a94e4f7c8bf49db28e12c6a7408368d3b5c80d796f3bd1affb32e0487b52fc",
+        "1panel-system": "28cc075330aaf439bad62e47d070225abd71174eac59226b456aecccb4b41215",
+        "1panel-use": "2f8e7eeb96ba8c3b74451e5f99faa325b7227f64acb83d097de58c68697cb8c4",
+        "1panel-websites": "2c8a63892191193a8c4fb304bde6d76a0dcc2d7ed8f606b206e3fcd28954ce7f"
       }
     }
   ]

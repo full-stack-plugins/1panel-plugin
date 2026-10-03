@@ -42,7 +42,7 @@ def fail(message: str) -> None:
 def hash_skill_dir(skill_dir: Path) -> str:
     """Return a deterministic digest over every file in one skill."""
     digest = hashlib.sha256()
-    for path in sorted(p for p in skill_dir.rglob("*") if p.is_file()):
+    for path in sorted((p for p in skill_dir.rglob("*") if p.is_file()), key=lambda p: p.relative_to(skill_dir).as_posix()):
         if '__pycache__' in path.parts or path.suffix == '.pyc':
             continue
         relative = path.relative_to(skill_dir).as_posix()

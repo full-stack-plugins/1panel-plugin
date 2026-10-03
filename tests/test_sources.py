@@ -1,4 +1,5 @@
 import importlib.util
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -12,6 +13,19 @@ spec.loader.exec_module(snapshot)
 
 
 class SourceOwnershipTests(unittest.TestCase):
+    def test_digest_uses_case_sensitive_portable_path_order(self):
+        spec = importlib.util.spec_from_file_location('vendor_order_test', ROOT / 'scripts/vendor/skill_vendor.py')
+        vendor = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(vendor)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'Z.txt').write_bytes(b'upper')
+            (root / 'a.txt').write_bytes(b'lower')
+            # Canonical POSIX byte names put uppercase Z before lowercase a on every OS.
+            record = b'Z.txt\0' + hashlib.sha256(b'upper').hexdigest().encode() + b'\n'
+            record += b'a.txt\0' + hashlib.sha256(b'lower').hexdigest().encode() + b'\n'
+            self.assertEqual(vendor.hash_skill_dir(root), hashlib.sha256(record).hexdigest())
+
     def test_all_skills_have_immutable_source_ownership(self):
         lock = json.loads((ROOT / 'skills.lock.json').read_text(encoding='utf-8'))
         self.assertTrue(lock.get('sources'), 'An immutable source release is required')
