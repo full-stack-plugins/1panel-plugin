@@ -20,3 +20,5 @@ Official source: v1.0.0 at a12b2d4ddae90f6b210b73b89ba2bc4b572dcd0c. The locally
 Test invocation requires ONEPANEL_TEST_BINARY; without it the seven integration tests are skipped. A narrow static-only result must not be presented as this integration evidence. The simulated endpoint validates actual transport/request behavior, not production 1Panel compatibility, external DNS/TLS/ACME, healthy containers or real database connectivity.
 
 These local results were recorded before source publication. Current remote CI status is available in the repository's GitHub Actions page. Tagged release, marketplace registration, production-panel acceptance and user-installed-client loading remain separate. Native clients must explicitly configure private paths when they do not support the portable variables.
+
+Release v0.1.1: all skills are source-managed by 1panel-skills v0.1.1; no plugin-local skill exception. Source-ownership and added-resource drift tests passed. Supported manifests and aggregate marketplace share version 0.1.1 and immutable installation ref v0.1.1. Actual client installation remains unverified.

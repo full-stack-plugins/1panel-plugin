@@ -1,6 +1,6 @@
 # 1Panel
 
-通过受控 stdio 入口、私有配置和可执行权限规则接入官方 1Panel MCP。英文显示名称为 **1Panel**。`1panel` 0.1.0 源码仓库：[1panel-plugin](https://github.com/full-stack-plugins/1panel-plugin)。版本 Release 与客户端安装验收另行进行，本插件由社区维护。
+通过受控 stdio 入口、私有配置和可执行权限规则接入官方 1Panel MCP。英文显示名称为 **1Panel**。`1panel` 0.1.1 源码仓库：[1panel-plugin](https://github.com/full-stack-plugins/1panel-plugin)。固定版本 v0.1.1 通过 Full Stack 插件市场分发，客户端安装验收另行进行，本插件由社区维护。
 
 [English](README.md) | 简体中文 · [架构](docs/1Panel-Plugin-Architecture.zh_CN.md) · [验收合同](docs/implementation-spec.md)
 
@@ -59,3 +59,15 @@ python scripts/package_plugin.py
 运行真实官方 MCP 集成测试前，将 ONEPANEL_TEST_BINARY 设置为独立构建的锁定版二进制路径；未设置时会明确跳过，不能算已覆盖。测试通过本插件入口初始化真实官方服务，向回环模拟 API 调用全部 11 个工具，检查认证、权限、异常、脱敏和未知结果，不修改生产服务器。
 
 压缩包和 SHA256 位于 dist/，排除密钥、日志和本地二进制。实际结果见[验证记录](docs/verification.md)。托管发布、市场登记以及用户已安装客户端/生产面板验收保持独立状态。见[许可证](LICENSE)和[来源声明](THIRD-PARTY-NOTICES.md)。
+
+## 安装与技能源维护
+
+通过客户端市场界面添加 `partme-ai/full-stack-plugins`，再选择 **1Panel**；安装来源固定为 `v0.1.1`。先按本文设置官方可执行文件、私有数据目录与面板 API；安装技能不会自动配置连接。
+
+技能内容只在 `1panel-skills` 修改。先发布技能源版本，再更新固定来源并执行：
+
+```bash
+python scripts/vendor/skill_vendor.py update
+python scripts/vendor/skill_vendor.py check
+python scripts/check_snapshot.py
+```

@@ -1,89 +1,32 @@
 {
   "version": 1,
-  "source": {
-    "package": "1panel-skills",
-    "kind": "git-commit-snapshot",
-    "published": true,
-    "upstream": {
-      "repository": "https://github.com/1Panel-dev/mcp-1panel",
-      "ref": "v1.0.0",
-      "commit": "a12b2d4ddae90f6b210b73b89ba2bc4b572dcd0c",
-      "method": "Inspected source; original operational guidance, no upstream code copied",
-      "background": [
-        "https://github.com/1Panel-dev/1Panel",
-        "https://1panel.pro/docs/v2/user_manual/mcp/mcp_server/"
-      ]
-    },
-    "repository": "https://github.com/full-stack-skills/1panel-skills",
-    "commit": "a895a20d8feb88baacbb61e14a713669af217748",
-    "ref": "a895a20d8feb88baacbb61e14a713669af217748",
-    "remote_verified": true,
-    "release_tag": null,
-    "note": "Exact source commit available on GitHub main; no tagged release is claimed."
-  },
-  "skills": {
-    "1panel-use": {
-      "agents/openai.yaml": "e93974477777608609d811007e2961a40e31b3940fd36ca77f1d9c826fb2edb5",
-      "LICENSE.txt": "9788c988b60209ecf085939b225ef19f4b0313b35df22c230469d4ced2061938",
-      "references/operation-contract.md": "580d67d29822dadb5ab6f2ed49d6a246f1a9c5237f532cac6c51199a7aa03660",
-      "references/tools.md": "a846d67b63ad5c9b8f44b5424126409349bd277d0ab14a6a290fec17b160e343",
-      "SKILL.md": "68973515b367623e9b92027af14870a767aded84434b7665bc5629ca9b3c0e79"
-    },
-    "1panel-setup": {
-      "agents/openai.yaml": "313b46df67a35252c0e82b9c3b67ac1f605a9d60954c5a53293b3301193b5d92",
-      "LICENSE.txt": "9788c988b60209ecf085939b225ef19f4b0313b35df22c230469d4ced2061938",
-      "references/operation-contract.md": "580d67d29822dadb5ab6f2ed49d6a246f1a9c5237f532cac6c51199a7aa03660",
-      "references/tools.md": "a846d67b63ad5c9b8f44b5424126409349bd277d0ab14a6a290fec17b160e343",
-      "SKILL.md": "9901fbb517ac522c202059c1f59946f30df9735794e925ff5d818527e50e8eb3"
-    },
-    "1panel-system": {
-      "agents/openai.yaml": "83eaa1510cf03d0ade8bd709e42978233742e9cfd4d417ba31db3f974e0d2552",
-      "LICENSE.txt": "9788c988b60209ecf085939b225ef19f4b0313b35df22c230469d4ced2061938",
-      "references/operation-contract.md": "580d67d29822dadb5ab6f2ed49d6a246f1a9c5237f532cac6c51199a7aa03660",
-      "references/tools.md": "a846d67b63ad5c9b8f44b5424126409349bd277d0ab14a6a290fec17b160e343",
-      "SKILL.md": "07c53ef69c68289af3b8b322a942e0a412d05e18313460a9a4336df253325ffb"
-    },
-    "1panel-websites": {
-      "agents/openai.yaml": "fef542305827525924db400a05d1de51be8507ae865b1ab29f0be4bd017f1f9a",
-      "LICENSE.txt": "9788c988b60209ecf085939b225ef19f4b0313b35df22c230469d4ced2061938",
-      "references/operation-contract.md": "580d67d29822dadb5ab6f2ed49d6a246f1a9c5237f532cac6c51199a7aa03660",
-      "references/tools.md": "a846d67b63ad5c9b8f44b5424126409349bd277d0ab14a6a290fec17b160e343",
-      "SKILL.md": "a22118aa928377fd8eb7dafe606ec814030aaef6d2f3937f94bde5a90a458f4b"
-    },
-    "1panel-certificates": {
-      "agents/openai.yaml": "b85d10ac0b7ec7bd3ecb487983932a7d42d624f53ce022e5b03d921e8936429d",
-      "LICENSE.txt": "9788c988b60209ecf085939b225ef19f4b0313b35df22c230469d4ced2061938",
-      "references/operation-contract.md": "580d67d29822dadb5ab6f2ed49d6a246f1a9c5237f532cac6c51199a7aa03660",
-      "references/tools.md": "a846d67b63ad5c9b8f44b5424126409349bd277d0ab14a6a290fec17b160e343",
-      "SKILL.md": "0aeb0b9f5de3e62e8a14ea1c7198ec5226db6f708d54adce5007b95ef40be055"
-    },
-    "1panel-databases": {
-      "agents/openai.yaml": "c4ea98db6970bf0f39498ede123c38d2156a80453677f8d7dffb336af22e23fd",
-      "LICENSE.txt": "9788c988b60209ecf085939b225ef19f4b0313b35df22c230469d4ced2061938",
-      "references/operation-contract.md": "580d67d29822dadb5ab6f2ed49d6a246f1a9c5237f532cac6c51199a7aa03660",
-      "references/tools.md": "a846d67b63ad5c9b8f44b5424126409349bd277d0ab14a6a290fec17b160e343",
-      "SKILL.md": "4b0e6a69749a443542ed78eff2c073b095aee4123fdbae40a5c686784e7bee26"
-    },
-    "1panel-apps": {
-      "agents/openai.yaml": "a40c31da05b7e88b3ee495a88fd5aeb07b1e8ee9ae05fb1807926f248eebeb7a",
-      "LICENSE.txt": "9788c988b60209ecf085939b225ef19f4b0313b35df22c230469d4ced2061938",
-      "references/operation-contract.md": "580d67d29822dadb5ab6f2ed49d6a246f1a9c5237f532cac6c51199a7aa03660",
-      "references/tools.md": "a846d67b63ad5c9b8f44b5424126409349bd277d0ab14a6a290fec17b160e343",
-      "SKILL.md": "eee68aa3889571b69806f9ae442066dc2ff26fc1fe6bac4797e8bfe41b7f3d45"
-    },
-    "1panel-security-audit": {
-      "agents/openai.yaml": "3a938e7e2a99d24d54e90a0107926e7396fcd43c0a956fd4837c037faf2cb3af",
-      "LICENSE.txt": "9788c988b60209ecf085939b225ef19f4b0313b35df22c230469d4ced2061938",
-      "references/operation-contract.md": "580d67d29822dadb5ab6f2ed49d6a246f1a9c5237f532cac6c51199a7aa03660",
-      "references/tools.md": "a846d67b63ad5c9b8f44b5424126409349bd277d0ab14a6a290fec17b160e343",
-      "SKILL.md": "32a00c3a5fd46363aaa1dd4fe979e03de8817e32eedd6c929f12eed824213ea3"
+  "sources": [
+    {
+      "package": "1panel-skills",
+      "repo": "https://github.com/full-stack-skills/1panel-skills.git",
+      "ref": "v0.1.1",
+      "skills": [
+        "1panel-apps",
+        "1panel-certificates",
+        "1panel-databases",
+        "1panel-security-audit",
+        "1panel-setup",
+        "1panel-system",
+        "1panel-use",
+        "1panel-websites"
+      ],
+      "dest": "skills/",
+      "sha": "b009fa51c35b41c16464163c49916fe9bcd21caf",
+      "sha256": {
+        "1panel-apps": "5c527c53bc09831b4dd034fb7c542641985908b083de6d58a13c59d829fb1c9c",
+        "1panel-certificates": "4d3b5daf149f2e2cec3f68477921605fa80126d6feefffd2265eed370d056b07",
+        "1panel-databases": "013d8ecb7a6c7da78877f981a27ce1de6b5ddcd96d65458e426cad897e63f770",
+        "1panel-security-audit": "05946cc1e5f84342917458a0ff69fba78c32d6db87e39eb89b08767e16a01b64",
+        "1panel-setup": "a526ac8b57cf607fa753d86905bf48043f228e7c29a35706f237dedff35fc11e",
+        "1panel-system": "ab50b877d0fee91ced19c2b216f0c7c24bcdc1ca4e5fdd8cb555879672611a2f",
+        "1panel-use": "8c8a0d7504363bd433ac7f0e470efbd35ed0db6ccc82cf6538a67f4c49a111e9",
+        "1panel-websites": "c603669235b1cd3403eb594d3d44e3acd77d76ee37a5df952a5313a191bbe12e"
+      }
     }
-  },
-  "excluded": [
-    "__pycache__",
-    "node_modules",
-    ".git",
-    ".venv",
-    "*.pyc"
   ]
 }

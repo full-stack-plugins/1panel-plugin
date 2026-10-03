@@ -1,6 +1,6 @@
 """Verify declared source-snapshot bytes; no download, source rewrite or implicit update."""
 import argparse
-import hashlib
+import importlib.util
 import json
 from pathlib import Path
 
@@ -10,25 +10,28 @@ ROOT = Path(__file__).resolve().parents[1]
 def validate(root):
     errors = []
     root = root.resolve()
-    lock = json.loads((root / 'skills.lock.json').read_text(encoding='utf-8'))
-    local = json.loads((root / 'plugin-local-skills.json').read_text(encoding='utf-8'))['skills']
-    actual = {p.name for p in (root / 'skills').iterdir() if p.is_dir()}
-    declared = set(lock['skills']) | set(local)
-    if actual != declared or set(lock['skills']) & set(local):
-        errors.append('Source/local inventory differs from discovered skills')
-    for name, expected in lock['skills'].items():
-        base = root / 'skills' / name
-        observed = {}
-        for file in base.rglob('*'):
-            if '__pycache__' in file.parts or file.suffix == '.pyc':
-                continue
-            if file.is_symlink():
-                errors.append(f'{name}: unexpected symlink')
-            elif file.is_file():
-                observed[file.relative_to(base).as_posix()] = hashlib.sha256(file.read_bytes()).hexdigest()
-        for relative in sorted(set(observed) | set(expected)):
-            if observed.get(relative) != expected.get(relative):
-                errors.append(f'{name}/{relative}: snapshot drift')
+    spec = importlib.util.spec_from_file_location('skill_vendor', root / 'scripts/vendor/skill_vendor.py')
+    vendor = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(vendor)
+    try:
+        lock = vendor.load_lock(root / 'skills.lock.json')
+        vendor.validate_no_cross_source_collisions(lock)
+        vendor.validate_plugin_local_inventory(root, lock)
+        policy = json.loads((root / 'plugin-local-skills.json').read_text(encoding='utf-8'))
+        if policy['skills']:
+            errors.append('Local skill exceptions are not allowed; maintain skills in source packages')
+        for source in lock['sources']:
+            destination = vendor.validate_source(source, root)
+            if not vendor.COMMIT_SHA_RE.fullmatch(source.get('sha', '')):
+                errors.append('Missing immutable source commit')
+            for name in source['skills']:
+                skill = destination / name
+                if any(p.is_symlink() for p in skill.rglob('*')):
+                    errors.append(f'{name}: unexpected symlink')
+                if not (skill / 'SKILL.md').is_file() or vendor.hash_skill_dir(skill) != source.get('sha256', {}).get(name):
+                    errors.append(f'{name}: source snapshot drift')
+    except (ValueError, RuntimeError, KeyError) as error:
+        errors.append(str(error))
     return errors
 
 

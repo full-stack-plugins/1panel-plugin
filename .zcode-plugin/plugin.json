@@ -1,0 +1,31 @@
+{
+  "name": "1panel",
+  "version": "0.1.1",
+  "displayName": "1Panel",
+  "description": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels.",
+  "author": {
+    "name": "Full Stack Skills / PartMe.AI"
+  },
+  "homepage": "https://github.com/full-stack-plugins/1panel-plugin",
+  "repository": "https://github.com/full-stack-plugins/1panel-plugin",
+  "license": "Apache-2.0",
+  "keywords": [
+    "1panel",
+    "linux",
+    "mcp",
+    "operations"
+  ],
+  "skills": "skills",
+  "mcpServers": {
+    "1panel": {
+      "command": "python",
+      "args": [
+        "-X",
+        "utf8",
+        "${ZCODE_PLUGIN_ROOT}/scripts/panel_proxy.py",
+        "--data",
+        "${PLUGIN_DATA}"
+      ]
+    }
+  }
+}

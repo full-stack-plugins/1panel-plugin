@@ -1,6 +1,6 @@
 # 1Panel
 
-Use the official 1Panel MCP through a bounded stdio entry, private configuration and executable access policy. English display name: **1Panel**. Package `1panel` 0.1.0 source repository: [1panel-plugin](https://github.com/full-stack-plugins/1panel-plugin). A tagged release and installed-client acceptance are separate; this is a community-maintained integration.
+Use the official 1Panel MCP through a bounded stdio entry, private configuration and executable access policy. English display name: **1Panel**. Package `1panel` 0.1.1 source repository: [1panel-plugin](https://github.com/full-stack-plugins/1panel-plugin). Release v0.1.1 is published through Full Stack Plugins; installed-client acceptance is separate; this is a community-maintained integration.
 
 English | [简体中文](README.zh-CN.md) · [Architecture](docs/1Panel-Plugin-Architecture.md) · [Acceptance](docs/implementation-spec.md)
 
@@ -16,7 +16,7 @@ flowchart LR
     F --> G[Observed result and verification]
 ```
 
-Eight reusable skills cover routing, setup, system, websites, certificates, databases, apps and scoped security review. They are snapshotted from 1panel-skills with exact per-file hashes. Official server source v1.0.0 / a12b2d4ddae90f6b210b73b89ba2bc4b572dcd0c is separately built/installed; no GPL server source or binary is bundled in this Apache package.
+Eight reusable skills cover routing, setup, system, websites, certificates, databases, apps and scoped security review. They are snapshotted from 1panel-skills with exact complete-skill content hashes. Official server source v1.0.0 / a12b2d4ddae90f6b210b73b89ba2bc4b572dcd0c is separately built/installed; no GPL server source or binary is bundled in this Apache package.
 
 The default readonly policy exposes six read tools. readwrite adds create_website/create_ssl/create_database; full additionally exposes install_mysql/install_openresty. Discovery is filtered and direct disallowed/unknown calls are rejected. An access setting makes a tool callable; it does not grant blanket user authorization or panel-side RBAC. The pinned release lacks server access-level flags; the plugin enforces these levels itself.
 
@@ -59,3 +59,15 @@ python scripts/package_plugin.py
 For real official-MCP integration tests, set ONEPANEL_TEST_BINARY to the pinned externally built executable before the unittest command. Without it, integration tests are explicitly skipped, not reported as covered. The suite initializes the real official server via this shipped proxy and calls all 11 tools against a loopback simulated API, checking authentication, policy, errors, redaction and unknown outcomes. No production server is changed.
 
 The archive/SHA256 go to dist/ and exclude keys, logs and local binaries. See [verification](docs/verification.md). Hosted release, marketplace registration and user-installed-client/production-panel acceptance remain separate. [License](LICENSE) and [source notices](THIRD-PARTY-NOTICES.md).
+
+## Installation and skill ownership
+
+Add `partme-ai/full-stack-plugins` using your client marketplace interface, then select **1Panel**. The install source is pinned to `v0.1.1`. Configure the official executable, private data directory and panel API first; installing the skills does not configure the connection.
+
+Skills are maintained only in `1panel-skills`. After publishing a source version, update the pinned release and run:
+
+```bash
+python scripts/vendor/skill_vendor.py update
+python scripts/vendor/skill_vendor.py check
+python scripts/check_snapshot.py
+```

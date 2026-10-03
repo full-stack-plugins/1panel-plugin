@@ -31,6 +31,7 @@ jobs:
       - run: python plugin/scripts/validate_portable_plugin.py
       - run: python plugin/scripts/validate_markdown_links.py
       - run: python plugin/scripts/check_snapshot.py
+      - run: python plugin/scripts/vendor/skill_vendor.py check
       - name: Unit and real official-MCP integration tests
         shell: bash
         run: ONEPANEL_TEST_BINARY="$GITHUB_WORKSPACE/official-test-binary${{ runner.os == 'Windows' && '.exe' || '' }}" python -m unittest discover -s plugin/tests -v
