@@ -1,5 +1,14 @@
 # 1Panel
 
+## Plugin marketplaces
+
+This plugin belongs to **Full-stack development**.
+
+| Category | Marketplace | Purpose |
+| --- | --- | --- |
+| Full-stack development | [Full Stack Plugins](https://github.com/partme-ai/full-stack-plugins) | Architecture and UI design, code understanding, quality checks, code review, workflow governance, and server operations |
+| AIGC content creation | [Full AIGC Plugins](https://github.com/partme-ai/full-aigc-plugins) | Image, video, audio, music, 3D, and multimodal content creation |
+
 Use the official 1Panel MCP through a bounded stdio entry, private configuration and executable access policy. English display name: **1Panel**. Package `1panel` 0.1.1 source repository: [1panel-plugin](https://github.com/full-stack-plugins/1panel-plugin). Release v0.1.1 is published through Full Stack Plugins; installed-client acceptance is separate; this is a community-maintained integration.
 
 English | [简体中文](README.zh-CN.md) · [Architecture](docs/1Panel-Plugin-Architecture.md) · [Acceptance](docs/implementation-spec.md)
