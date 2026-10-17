@@ -1,0 +1,32 @@
+{
+  "name": "@partme-dsh/1panel",
+  "version": "0.2.0",
+  "description": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels.",
+  "type": "module",
+  "main": "lib/index.js",
+  "icon": "./icon.png",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "lib/index.js",
+    "icon.svg",
+    "icon.png",
+    "README.md"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "1panel",
+    "linux",
+    "mcp",
+    "operations"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
