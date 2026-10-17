@@ -22,7 +22,7 @@
       "interface": {
         "displayName": "1Panel",
         "shortDescription": "Scoped 1Panel operations via official MCP",
-        "logo": "https://cdn.jsdelivr.net/gh/full-stack-plugins/1panel-plugin@v0.1.1/assets/logo.png"
+        "logo": "https://cdn.jsdelivr.net/gh/full-stack-plugins/1panel-plugin@v0.2.0/assets/logo.png"
       }
     }
   ]
