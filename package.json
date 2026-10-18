@@ -1,0 +1,12 @@
+{
+  "name": "1panel-plugin",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "main": "./dsh/lib/index.js",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
