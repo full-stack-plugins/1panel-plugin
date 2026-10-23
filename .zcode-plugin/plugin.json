@@ -1,8 +1,8 @@
 {
   "name": "1panel",
   "version": "0.2.0",
-  "displayName": "1Panel",
-  "description": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels.",
+  "displayName": "Panel Operations · 1Panel",
+  "description": "Inspect and operate 1Panel through the pinned official MCP. Access levels are explicit and credentials stay private.",
   "author": {
     "name": "Full Stack Skills / PartMe.AI"
   },
@@ -27,5 +27,8 @@
         "${PLUGIN_DATA}"
       ]
     }
+  },
+  "displayName_i18n": {
+    "en": "Panel Operations · 1Panel"
   }
 }

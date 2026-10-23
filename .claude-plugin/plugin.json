@@ -1,7 +1,7 @@
 {
   "name": "1panel",
   "version": "0.2.0",
-  "description": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels.",
+  "description": "Inspect and operate 1Panel through the pinned official MCP. Access levels are explicit and credentials stay private.",
   "author": {
     "name": "Full Stack Skills / PartMe.AI"
   },

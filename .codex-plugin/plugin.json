@@ -1,7 +1,7 @@
 {
   "name": "1panel",
   "version": "0.2.0",
-  "description": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels.",
+  "description": "Inspect and operate 1Panel through the pinned official MCP. Access levels are explicit and credentials stay private.",
   "author": {
     "name": "Full Stack Skills / PartMe.AI"
   },
@@ -14,8 +14,8 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "1Panel",
-    "shortDescription": "Scoped 1Panel operations via official MCP",
+    "displayName": "Panel Operations · 1Panel",
+    "shortDescription": "Apps, sites, certificates, databases and security audit",
     "longDescription": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels.",
     "developerName": "Full Stack Skills / PartMe.AI",
     "category": "Productivity",
@@ -29,7 +29,9 @@
       "Inspect my websites and certificate status"
     ],
     "logo": "./assets/logo.png",
-    "logoDark": "./assets/logo.png"
+    "logoDark": "./assets/logo.png",
+    "composerIcon": "./assets/logo.png",
+    "composerIconDark": "./assets/logo.png"
   },
   "mcpServers": "./.mcp.json"
 }
