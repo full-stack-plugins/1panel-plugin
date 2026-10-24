@@ -23,7 +23,12 @@
         "displayName": "1Panel · Panel Operations",
         "shortDescription": "Apps, sites, certificates, databases and security audit",
         "logo": "https://cdn.jsdelivr.net/gh/full-stack-plugins/1panel-plugin@v0.2.0/assets/logo.png"
-      }
+      },
+      "line": "full-stack",
+      "componentTypes": [
+        "skills",
+        "mcp"
+      ]
     }
   ]
 }
