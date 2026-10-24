@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "1panel",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "通过钉死版本的官方 MCP 检查与操作 1Panel；访问级别显式分级，凭据保持私有。",
   "author": {
     "name": "Full Stack Skills / PartMe.AI"
