@@ -1,7 +1,7 @@
 {
   "name": "partme-ai-1panel",
   "interface": {
-    "displayName": "Panel Operations · 1Panel"
+    "displayName": "1Panel · Panel Operations"
   },
   "plugins": [
     {
@@ -20,7 +20,7 @@
       "description": "Inspect and operate 1Panel through the pinned official MCP. Access levels are explicit and credentials stay private.",
       "icon": "https://cdn.jsdelivr.net/gh/full-stack-plugins/1panel-plugin@v0.2.0/assets/logo.png",
       "interface": {
-        "displayName": "Panel Operations · 1Panel",
+        "displayName": "1Panel · Panel Operations",
         "shortDescription": "Apps, sites, certificates, databases and security audit",
         "logo": "https://cdn.jsdelivr.net/gh/full-stack-plugins/1panel-plugin@v0.2.0/assets/logo.png"
       }

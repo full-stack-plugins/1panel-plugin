@@ -14,7 +14,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Panel Operations · 1Panel",
+    "displayName": "1Panel · Panel Operations",
     "shortDescription": "Apps, sites, certificates, databases and security audit",
     "longDescription": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels.",
     "developerName": "Full Stack Skills / PartMe.AI",
