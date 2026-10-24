@@ -1,7 +1,7 @@
 {
   "name": "partme-ai-1panel",
   "interface": {
-    "displayName": "1Panel · Panel Operations"
+    "displayName": "1Panel（面板运维）"
   },
   "plugins": [
     {
