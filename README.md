@@ -1,82 +1,160 @@
-# 1Panel
+# 1Panel（面板运维）
 
-## Plugin marketplaces
+> 应用、网站、证书、数据库与安全审计
 
-This plugin belongs to **Full-stack development**.
+**版本**：0.2.0 · **许可证**：Apache-2.0 · **技能**：8 个
 
-| Category | Marketplace | Purpose |
-| --- | --- | --- |
-| Full-stack development | [Full Stack Plugins](https://github.com/partme-ai/full-stack-plugins) | Architecture and UI design, code understanding, quality checks, code review, workflow governance, and server operations |
-| AIGC content creation | [Full AIGC Plugins](https://github.com/partme-ai/full-aigc-plugins) | Image, video, audio, music, 3D, and multimodal content creation |
+[English](README.en.md) · [安装](#安装) · [快速开始](#快速开始) · [项目结构](#项目结构)
 
-Use the official 1Panel MCP through a bounded stdio entry, private configuration and executable access policy. English display name: **1Panel**. Package `1panel` 0.1.1 source repository: [1panel-plugin](https://github.com/full-stack-plugins/1panel-plugin). Release v0.1.1 is published through Full Stack Plugins; installed-client acceptance is separate; this is a community-maintained integration.
+## 项目定位
 
-English | [简体中文](README.zh-CN.md) · [Architecture](docs/1Panel-Plugin-Architecture.md) · [Acceptance](docs/implementation-spec.md)
+通过钉死版本的官方 MCP 检查与操作 1Panel；访问级别显式分级，凭据保持私有。
 
-## Architecture and capabilities
+本插件属于研发工具线，面向需要在真实仓库或真实服务上完成操作、并保留可核验结果的用户。
 
-```mermaid
-flowchart LR
-    A[8 source skills] --> B[Discovered MCP tools]
-    B --> C[Standard mcp.json: stdio policy entry]
-    D[Private PLUGIN_DATA config] --> C
-    C --> E[Pinned official mcp-1panel executable]
-    E --> F[User's existing 1Panel API]
-    F --> G[Observed result and verification]
-```
-
-Eight reusable skills cover routing, setup, system, websites, certificates, databases, apps and scoped security review. They are snapshotted from 1panel-skills with exact complete-skill content hashes. Official server source v1.0.0 / a12b2d4ddae90f6b210b73b89ba2bc4b572dcd0c is separately built/installed; no GPL server source or binary is bundled in this Apache package.
-
-The default readonly policy exposes six read tools. readwrite adds create_website/create_ssl/create_database; full additionally exposes install_mysql/install_openresty. Discovery is filtered and direct disallowed/unknown calls are rejected. An access setting makes a tool callable; it does not grant blanket user authorization or panel-side RBAC. The pinned release lacks server access-level flags; the plugin enforces these levels itself.
-
-No deletion, firewall, SSH, backup/restore, arbitrary SQL, generic app installation or certificate renewal/binding tools are promised. Lists cap at 500. Certificate creation picks the first ACME account internally; MySQL creation defaults source permission to `%`; generated passwords are not a reliable credential delivery channel. See the skills' local tools references before operations.
-
-## Explicit setup
-
-Requires Python 3.11+, an existing panel with API enabled and a trusted official executable. Root mcp.json is Agent Plugins 1.0.0, with no secrets or reliance on inherited PANEL variables. `${PLUGIN_DATA}` is supplied by a portable client; private configuration is never stored in the plugin.
-
-For an explicit source build, use an existing official checkout containing tag v1.0.0, Git and Go 1.25+:
+## 一眼看懂
 
 ```text
-python scripts/build_official.py --source <official-checkout> --output <new-absolute-binary-path>
+仓库 / 服务 / 配置 / 请求
+        │
+        ▼
+1Panel（面板运维） 技能（检查 → 计划 → 执行 → 核验）
+        │
+        ├── MCP 服务
+        └── 固定 CLI / API
+        │
+        ▼
+变更结果 + 证据 + 回退路径
 ```
 
-The helper verifies the ref/commit, builds with GOTOOLCHAIN=local, writes a build receipt with SHA256, and never installs/upgrades Go. Building fetches project dependencies. Verify the source/receipt before using its hash; a hash alone is not publisher authentication.
+## 能力与边界
+
+| 能力 | 说明 | 边界 |
+|---|---|---|
+| 检查 | 读取当前状态与配置 | 不修改未授权目标 |
+| 计划 | 说明将执行的步骤与影响 | 高风险操作需明确确认 |
+| 执行 | 通过 MCP 或固定工具完成操作 | 不绕过权限与审计 |
+| 核验 | 回读结果、日志与状态 | 命令成功不等于目标达成 |
+| 恢复 | 保留回退路径与证据 | 不确定时不自动重放 |
+
+## 架构与核心流程
 
 ```text
-python scripts/setup_connection.py --data <absolute-client-data> --binary <verified-absolute-binary> --binary-sha256 <verified-sha256> --host <https-panel-origin>
+宿主 / Agent
+   │  调用技能
+   ▼
+skills/1panel-*  ──►  MCP 服务 / 固定 CLI
+                              │
+                              ▼
+                     目标系统 / 仓库
+                              │
+                              ▼
+                     回读、核验、报告
 ```
 
-The key is entered through a hidden prompt. connection.json stores binary identity, host, reviewed commit and access level; credentials.json is protected separately (POSIX mode / Windows current-user ACL). Do not paste keys into chat. Settings default readonly; `--access-level readwrite` or full is an explicit change, and `--replace` is required to overwrite existing settings. Reconnect afterward. The child receives credentials in its environment, not process arguments. Its local logs are confined to the private runtime directory; no payloads are logged by the plugin.
+原则：
 
-Native Codex/Claude metadata and .mcp.json are compatibility files. Native clients that do not supply/expand PLUGIN_DATA must set an absolute private data path in their native configuration. Use an actual Python executable when a client cannot launch a Windows .cmd alias. Runtime interpolation and installed-client loading remain separately unverified; do not treat manifest parity as installation proof.
+1. 先只读检查，再计划，再执行。
+2. 明确目标、范围、凭据和回退方式。
+3. 执行后回读真实现场，不只看退出码。
+4. 不确定时停止并报告，不自动重试有副作用的操作。
 
-## Operation and failure contract
+## 兼容性
 
-Resolve exact target and authorization, inspect existing resources, submit one bounded operation, then verify with available reads. Requests are not automatically retried. Timeout or child loss reports unknown outcome: inspect actual panel state before resubmission. No automatic deletion rollback. Invalid setup fails with a concise nonsecret diagnostic; skill loading can continue even when the MCP entry is unavailable.
+| 项目 | 状态 |
+|---|---|
+| 宿主 | 支持 MCP 的宿主 |
+| 运行时 | 以插件清单与实际安装环境为准 |
+| 平台 | 以发行说明与目标系统为准 |
 
-## Validate and package
+## 安装
 
 ```bash
-python scripts/validate_portable_plugin.py
-python scripts/validate_markdown_links.py
-python scripts/check_snapshot.py
-python -m unittest discover -s tests -v
-python scripts/package_plugin.py
+codex plugin marketplace add partme-ai/full-stack-plugins
+codex plugin add 1panel@full-stack-plugins
 ```
 
-For real official-MCP integration tests, set ONEPANEL_TEST_BINARY to the pinned externally built executable before the unittest command. Without it, integration tests are explicitly skipped, not reported as covered. The suite initializes the real official server via this shipped proxy and calls all 11 tools against a loopback simulated API, checking authentication, policy, errors, redaction and unknown outcomes. No production server is changed.
+安装后重启宿主，先做只读检查。
 
-The archive/SHA256 go to dist/ and exclude keys, logs and local binaries. See [verification](docs/verification.md). Hosted release, marketplace registration and user-installed-client/production-panel acceptance remain separate. [License](LICENSE) and [source notices](THIRD-PARTY-NOTICES.md).
+## 快速开始
 
-## Installation and skill ownership
+1. 确认目标、环境、权限和影响范围。
+2. 只读检查现状，记录基线。
+3. 执行一次有界变更。
+4. 回读目标状态、日志和关键指标。
+5. 保存证据；失败时按回退路径恢复。
 
-Add `partme-ai/full-stack-plugins` using your client marketplace interface, then select **1Panel**. The install source is pinned to `v0.1.1`. Configure the official executable, private data directory and panel API first; installing the skills does not configure the connection.
+## 配置
 
-Skills are maintained only in `1panel-skills`. After publishing a source version, update the pinned release and run:
+按插件文档配置 MCP 地址、认证方式和目标环境。不要把令牌、密码或私钥写入仓库。
+
+## 扩展契约
+
+新增技能时应使用 `1panel-` 前缀，声明触发条件、权限边界和失败处理，通过 MCP 或固定工具执行，并在变更后回读核验。
+
+## 重试、幂等与恢复
+
+- 失败后先检查目标当前状态。
+- 不自动重放已产生副作用的操作。
+- 重试前确认幂等条件与回退路径。
+- 保留命令、日志和结果证据。
+
+## 数据与状态
+
+- 凭据只从安全配置读取。
+- 变更前后的状态分别记录。
+- 不把生产数据复制到不受控目录。
+
+## 安全
+
+- 遵循最小权限原则。
+- 高风险操作必须明确确认。
+- 发现凭据泄露先轮换，再清理痕迹。
+- 不绕过审计、权限或分支保护。
+
+## 可观测性与运行
+
+记录命令、目标、时间、结果和关键指标；交付前回读一次真实状态。
+
+## 开发与验证
 
 ```bash
-python scripts/vendor/skill_vendor.py update
-python scripts/vendor/skill_vendor.py check
-python scripts/check_snapshot.py
+node --test
+python3 -m pytest
 ```
+
+## 打包与发布
+
+版本与清单、市场、tag 一致；发布后重新安装并做一次只读检查。
+
+## 升级与迁移
+
+升级前备份配置与状态；确认兼容性；迁移后重新核验连接和权限。
+
+## 故障排查
+
+| 现象 | 检查 |
+|---|---|
+| 连接失败 | 地址、网络、认证 |
+| 权限不足 | 账号角色与令牌范围 |
+| 操作无效果 | 回读目标状态与日志 |
+| 结果不确定 | 停止重试，先核对现场 |
+
+## 项目结构
+
+```text
+1panel-plugin/
+├── .zcode-plugin/      # ZCode 清单
+├── .codex-plugin/      # Codex 清单
+├── skills/             # 8 个技能
+├── docs/               # 架构与验证记录
+└── assets/             # 图标与静态资源
+```
+
+## 贡献与支持
+
+提交问题时附上插件版本、宿主、目标环境、命令、日志和预期结果。不要附凭据或生产数据。
+
+## 许可证
+
+Apache-2.0，见 [LICENSE](LICENSE)。
