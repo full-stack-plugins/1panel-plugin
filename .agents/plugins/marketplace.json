@@ -18,18 +18,19 @@
       "category": "Productivity",
       "version": "0.2.1",
       "description": "通过钉死版本的官方 MCP 检查与操作 1Panel；访问级别显式分级，凭据保持私有。",
-      "icon": "https://cdn.jsdelivr.net/gh/full-stack-plugins/1panel-plugin@v0.2.0/assets/logo.png",
+      "icon": "https://cdn.jsdelivr.net/gh/full-stack-plugins/1panel-plugin@v0.2.1/assets/logo.png",
       "interface": {
         "displayName": "1Panel（面板运维）",
         "shortDescription": "应用、网站、证书、数据库与安全审计",
-        "logo": "https://cdn.jsdelivr.net/gh/full-stack-plugins/1panel-plugin@v0.2.0/assets/logo.png"
+        "logo": "https://cdn.jsdelivr.net/gh/full-stack-plugins/1panel-plugin@v0.2.1/assets/logo.png"
       },
       "line": "full-stack",
       "componentTypes": [
         "skills",
         "mcp"
       ],
-      "displayName": "1Panel（面板运维）"
+      "displayName": "1Panel（面板运维）",
+      "shortDescription": "应用、网站、证书、数据库与安全审计"
     }
   ]
 }

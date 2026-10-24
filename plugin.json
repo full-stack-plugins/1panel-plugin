@@ -16,8 +16,8 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "1Panel · Panel Operations",
-        "shortDescription": "Apps, sites, certificates, databases and security audit",
+        "displayName": "1Panel（面板运维）",
+        "shortDescription": "应用、网站、证书、数据库与安全审计",
         "longDescription": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels.",
         "developerName": "Full Stack Skills / PartMe.AI",
         "category": "Productivity",
