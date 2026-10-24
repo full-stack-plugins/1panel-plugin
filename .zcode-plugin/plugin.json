@@ -1,8 +1,8 @@
 {
   "name": "1panel",
   "version": "0.2.0",
-  "displayName": "1Panel · Panel Operations",
-  "description": "Inspect and operate 1Panel through the pinned official MCP. Access levels are explicit and credentials stay private.",
+  "displayName": "1Panel（面板运维）",
+  "description": "通过钉死版本的官方 MCP 检查与操作 1Panel；访问级别显式分级，凭据保持私有。",
   "author": {
     "name": "Full Stack Skills / PartMe.AI"
   },
@@ -29,6 +29,10 @@
     }
   },
   "displayName_i18n": {
-    "en": "1Panel · Panel Operations"
+    "en": "1Panel · Panel Operations",
+    "zh-CN": "1Panel（面板运维）"
+  },
+  "description_i18n": {
+    "zh-CN": "通过钉死版本的官方 MCP 检查与操作 1Panel；访问级别显式分级，凭据保持私有。"
   }
 }
