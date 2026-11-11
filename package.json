@@ -1,13 +1,14 @@
 {
-  "name": "1panel-plugin",
-  "version": "0.2.0",
+  "name": "1panel",
+  "version": "0.2.2",
   "private": true,
   "type": "module",
   "main": "./dsh/lib/index.js",
   "dsh": {
     "bundle": {
-      "patch": "./cordis.patch.yml"
+      "patch": "./dsh/cordis.patch.yml"
     }
   },
-  "icon": "./dsh/icon.png"
+  "icon": "./dsh/icon.png",
+  "description": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels."
 }
