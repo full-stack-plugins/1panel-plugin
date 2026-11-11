@@ -1,6 +1,6 @@
 {
   "name": "1panel",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels.",
   "type": "module",
   "main": "lib/index.js",
