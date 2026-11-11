@@ -1,6 +1,6 @@
 {
   "name": "1panel",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "通过钉死版本的官方 MCP 检查与操作 1Panel；访问级别显式分级，凭据保持私有。",
   "author": {
     "name": "Full Stack Skills / PartMe.AI"
@@ -14,7 +14,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "1Panel · Panel Operations",
+    "displayName": "1Panel（面板运维）",
     "shortDescription": "Apps, sites, certificates, databases and security audit",
     "longDescription": "Inspect and operate 1Panel through the pinned official MCP with private configuration and explicit access levels.",
     "developerName": "Full Stack Skills / PartMe.AI",
